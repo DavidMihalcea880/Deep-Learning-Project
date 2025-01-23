@@ -1,0 +1,18 @@
+
+This code is all about loading images, reading coordinates from a CSV file, and drawing bounding boxes on those images. Let's break it down step by step.
+
+First, we import a few libraries. We’re using **`cv2`**, which is OpenCV for image processing, to read and manipulate the images. We also need **`csv`** to read data from a CSV file that contains the coordinates 
+for the bounding boxes. **`os`** helps us get the list of files in the folder where our images are stored, and **`matplotlib`** is used to display the images once we've added the bounding boxes.
+
+The next step is reading the coordinates from the CSV file, which is named `Coordinatess.csv`. The coordinates define where the bounding boxes should go on the images, specifying the position and size of each box. 
+We loop through each row in the CSV and store the values in a list called `coordinates`. These values will represent the top-left corner of the box (x, y) and its width (w) and height (h).
+
+Once we have the coordinates, we move on to loading the images. We use **`os.listdir()`** to get all the filenames in the `image` folder. Then, for each image, we use **`cv2.imread()`** to load it into the program 
+and store it in the `images` list. Now all the images are ready to be processed.
+
+Now comes the fun part: drawing the bounding boxes! We loop through the images and use the index to grab the corresponding coordinates for each image. If the coordinates are missing (empty), we set them to 0 to 
+avoid errors. Then, we use **`cv2.rectangle()`** to draw the bounding box on the image, specifying the position and size based on the coordinates. After that, we display the image using **`plt.imshow()`** so we 
+can see the result. **`plt.axis('on')`** ensures the axes are visible, and **`plt.show()`** actually shows the image in a window.
+
+In the end, this code lets you load images, draw bounding boxes on them based on coordinates from a CSV file, and then display the images to visualize the results. It’s a great way to highlight specific areas 
+in an image, like for object detection or similar tasks.
